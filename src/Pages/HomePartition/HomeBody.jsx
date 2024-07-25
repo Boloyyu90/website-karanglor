@@ -4,16 +4,30 @@ import Slider from 'react-slick';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { motion } from 'framer-motion';
 
+
 import Image1 from '../../assets/images/DSC01491.png';
 import Image2 from '../../assets/images/DSC01492.png';
 import Image3 from '../../assets/images/DSC01497.png';
 import Image4 from '../../assets/images/DSC01503.png';
+import Maps from '../../assets/images/Peta.png';
 
 function Body() {
   const [activeTab, setActiveTab] = useState('tourism');
+  const [isFullscreen, setIsFullscreen] = useState(false);
+  const [isHeaderVisible, setIsHeaderVisible] = useState(true);
 
   const handleTabClick = (tab) => {
     setActiveTab(tab);
+  };
+
+  const handleImageClick = () => {
+    setIsFullscreen(true);
+    setIsHeaderVisible(false);
+  };
+
+  const handleCloseFullscreen = () => {
+    setIsFullscreen(false);
+    setIsHeaderVisible(true);
   };
 
   const settings = {
@@ -30,6 +44,7 @@ function Body() {
 
   return (
     <>
+      {isHeaderVisible && (
         <div className='text-black m-5 p-2 border rounded-md bg-white bg-opacity-80'>
           <h1 className='text-2xl font-bold'>Selamat Datang di Dusun Karanglor</h1>
           <p className='text-sm font-light mt-2'>
@@ -39,15 +54,12 @@ function Body() {
           <p className='text-sm font-light mt-2'>
             Dusun Karanglor terletak di Desa Jepitu, Kecamatan Girisubo, Kabupaten Gunung Kidul, Daerah Istimewa Yogyakarta. Dusun Karanglor adalah dusun yang memiliki potensi yang cukup besar. Dengan kerjasama antar warga yang baik, dusun ini diharapkan dapat terus berkembang dan meningkatkan taraf hidup masyarakatnya.
           </p>
-          <div className='justify-center mt-8'>
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4208.628831995166!2d110.71234053446065!3d-8.148528756483655!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7bc7dc08348e55%3A0x103a8fa8403692f6!2sBalai%20Padukuhan%20Karanglor!5e0!3m2!1sid!2sid!4v1721350570475!5m2!1sid!2sid"
-              className="w-full h-96 border rounded-md"
-              allowFullScreen=""
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-            ></iframe>
+          
+          <div className='p-3'>
+            <img src={Maps} alt="" onClick={handleImageClick} />
+            <p className='my-2 ms-2 text-xs font-thin text-[#7DA148]'>Klik gambar untuk details</p>
           </div>
+
           <div className="mb-4 border-b border-gray-200 dark:border-gray-700">
             <ul className="flex flex-wrap -mb-px text-sm font-medium text-center" id="default-tab" role="tablist">
               <li className="mr-2" role="presentation">
@@ -118,7 +130,9 @@ function Body() {
               <p className="text-sm textblack">This is some placeholder content.</p>
             </div>
           </div>
-      </div>
+        </div>
+      )}
+
       <div className='relative'>
         <div className="overflow-hidden h-[20rem]"> {/* Adjusted height */}
           <Slider {...settings}>
@@ -142,8 +156,28 @@ function Body() {
               <h1>Mari kenali lebih dalam tentang Dusun Karanglor, di mana kesederhanaan menjadi kekuatan, dan kebahagiaan adalah milik semua.</h1>
             </motion.div>
           </div>
+          
         </div>
       </div>
+      <div className='justify-center my-10 m-10'>
+        <h1 className='flex justify-center font-bold text-2xl my-5'>DETAIL LOKASI</h1>
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4208.628831995166!2d110.71234053446065!3d-8.148528756483655!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7bc7dc08348e55%3A0x103a8fa8403692f6!2sBalai%20Padukuhan%20Karanglor!5e0!3m2!1sid!2sid!4v1721350570475!5m2!1sid!2sid"
+                  className="w-full h-96 border rounded-md"
+                  allowFullScreen=""
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                ></iframe>
+      </div>
+
+      {isFullscreen && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-75"
+          onClick={handleCloseFullscreen}
+        >
+          <img src={Maps} alt="Full screen" className="max-w-full max-h-full" />
+        </div>
+      )}
     </>
   );
 }

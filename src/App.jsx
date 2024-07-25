@@ -9,6 +9,7 @@ import Tourism from './Pages/Tourism';
 import KKN from './Pages/KKN';
 import Header from './Components/Header';
 import Footer from './Components/Footer';
+import Info from './Pages/Info';
 
 function App() {
   return (
@@ -22,7 +23,7 @@ function App() {
         <Route path="/microenterprise" element={<MicroEnterprise />} />
         <Route path="/tourism" element={<Tourism />} />
         <Route path="/kkn-uajy" element={<KKN />} />
-        {/* <Route path="/informasi" element={<Info />} /> */}
+        <Route path="/informasi" element={<Info />} />
       </Routes>
       <Footer />
     </Router>

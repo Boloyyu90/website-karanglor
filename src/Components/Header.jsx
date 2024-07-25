@@ -24,6 +24,10 @@ const Header = () => {
     };
   }, []);
 
+  const closeDropdown = () => {
+    setIsOpen(false);
+  };
+
   return (
     <>
       <div className="fixed top-2 left-0 right-0 grid w-full grid-cols-4 md:grid-cols-5 lg:grid-cols-6 h-10 md:h-30 lg:h-33 z-50">
@@ -31,11 +35,11 @@ const Header = () => {
           <div className="md:p-5 lg:p-5 col-span-5 md:col-span-3 lg:col-span-3 rounded-tr-full bg-white text-[#7DA148]">
             <div className="flex items-center m-3">
               <div className="pb-2 md:w-15 lg:w-20 object-contain">
-              <img 
-                src={logoDesa}
-                alt="Logo" 
-                className='w-10'
-              />
+                <img 
+                  src={logoDesa}
+                  alt="Logo" 
+                  className='w-10'
+                />
               </div>
               <div className="grid grid-rows-1 ms-3 md:ml-5 lg:ml-5">
                 <a className="text-md md:text-lg lg:text-xl font-bold">
@@ -66,50 +70,51 @@ const Header = () => {
           >
             <ul className="py-2 text-sm text-[#7DA148]" aria-labelledby="dropdownMenuIconButton">
               <li>
-                <Link to="/" className="px-4 py-3 bg-white hover:bg-[#7DA148] hover:text-white border-b border-[#7DA148] grid grid-rows-2">
+                <Link to="/" onClick={closeDropdown} className="px-4 py-3 bg-white hover:bg-[#7DA148] hover:text-white border-b border-[#7DA148] grid grid-rows-2">
                   <span className='flex justify-center'>Beranda</span>
                   <span className='flex justify-center'>ꦧꦼꦫꦤ꧀ꦝ</span>
                 </Link>
               </li>
               <li>
-                <Link to="/education" className="px-4 py-3 bg-white hover:bg-[#7DA148] hover:text-white border-b border-[#7DA148] grid grid-rows-2">
+                <Link to="/education" onClick={closeDropdown} className="px-4 py-3 bg-white hover:bg-[#7DA148] hover:text-white border-b border-[#7DA148] grid grid-rows-2">
                   <span className='flex justify-center'>Edukasi</span>
                   <span className='flex justify-center'>ꦌꦣꦸꦏꦱꦶ</span>
                 </Link>
               </li>
               <li>
-                <Link to="/health" className="px-4 py-3 bg-white hover:bg-[#7DA148] hover:text-white border-b border-[#7DA148] grid grid-rows-2">
+                <Link to="/health" onClick={closeDropdown} className="px-4 py-3 bg-white hover:bg-[#7DA148] hover:text-white border-b border-[#7DA148] grid grid-rows-2">
                   <span className='flex justify-center'>Kesehatan</span>
                   <span className='flex justify-center'>ꦏꦼꦱꦺꦲꦠꦤ꧀</span>
                 </Link>
               </li>
               <li>
-                <Link to="/microenterprise" className="px-4 py-3 bg-white hover:bg-[#7DA148] hover:text-white border-b border-[#7DA148] grid grid-rows-2">
+                <Link to="/microenterprise" onClick={closeDropdown} className="px-4 py-3 bg-white hover:bg-[#7DA148] hover:text-white border-b border-[#7DA148] grid grid-rows-2">
                   <span className='flex justify-center'>UMKM</span>
                   <span className='flex justify-center'>ꦈꦱꦲꦩꦶꦏꦿꦺꦴ</span>
                 </Link>
               </li>
               <li>
-                <Link to="/culture" className="px-4 py-3 bg-white hover:bg-[#7DA148] hover:text-white border-b border-[#7DA148] grid grid-rows-2">
+                <Link to="/culture" onClick={closeDropdown} className="px-4 py-3 bg-white hover:bg-[#7DA148] hover:text-white border-b border-[#7DA148] grid grid-rows-2">
                   <span className='flex justify-center'>Kebudayaan</span>
                   <span className='flex justify-center'>ꦏꦼꦧꦸꦣꦪꦄꦤ꧀</span>
                 </Link>
               </li>
               <li>
-                <Link to="/tourism" className="px-4 py-3 bg-white hover:bg-[#7DA148] hover:text-white border-b border-[#7DA148] grid grid-rows-2">
+                <Link to="/tourism" onClick={closeDropdown} className="px-4 py-3 bg-white hover:bg-[#7DA148] hover:text-white border-b border-[#7DA148] grid grid-rows-2">
                   <span className='flex justify-center'>Pariwisata</span>
                   <span className='flex justify-center'>ꦥꦫꦶꦮꦶꦱꦠ</span>
                 </Link>
               </li>
               <li>
-                <Link to="/kkn-uajy" className="px-4 mb-3 py-3 bg-white hover:bg-[#7DA148] hover:text-white grid grid-rows-2">
+                <Link to="/kkn-uajy" onClick={closeDropdown} className="px-4 mb-3 py-3 bg-white hover:bg-[#7DA148] border-b border-[#7DA148] hover:text-white grid grid-rows-2">
                   <span className='flex justify-center'>KKN UAJY</span>
                   <span className='flex justify-center'>ꦏꦸꦭꦶꦪꦃꦏꦼꦂꦗꦚꦠ</span>
                 </Link>
               </li>
               <li>
-                <Link to="/informasi" className="px-4 mb-3 py-3 bg-white hover:bg-[#7DA148] hover:text-white grid grid-rows-1">
-                  <span className='flex justify-center'>Informasi</span>
+                <Link to="/informasi" onClick={closeDropdown} className="px-4 mb-3 py-3 bg-white hover:bg-[#7DA148] hover:text-white grid grid-rows-2">
+                  <span className='flex justify-center'>Informasi & Berita</span>
+                  <span className='flex justify-center'>ꦧꦼꦫꦶꦠ</span>
                 </Link>
               </li>
             </ul>
